@@ -11,6 +11,8 @@ import TaskList from './components/TaskList';
 import type { Task } from './models/Task.model';
 import { Container, Stack } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
+import Counter from './components/Counter';
+import { useState } from 'react';
 
 function App() {
 
@@ -41,6 +43,20 @@ function App() {
         { id: 3, title: 'Grocery shopping', status: 'completed', description: 'Buy fruits and vegetables' }
     ]
 
+    const [count, setCount] = useState<number>(0);
+
+    const handleIncrement = () => {
+        setCount(count + 1);
+    };
+
+    const handleDecrement = () => {
+        setCount(count - 1);
+    };
+
+    const handleMultiply = () => {
+        setCount(count * 2);
+    };
+
     return (
         <div className='d-flex flex-column align-items-center justify-content-center vh-100 mt-4'>
             <p>
@@ -69,6 +85,15 @@ function App() {
                         ))}
                     </Stack>
                 </div>
+            </Container>
+            <Container>
+                <h2 className='mt-4'>Counter:</h2>
+                <p>Count: {count}</p>
+                <Counter
+                    onIncrement={handleIncrement}
+                    onDecrement={handleDecrement}
+                    onMultiply={handleMultiply}
+                />
             </Container>
         </div>
     );
