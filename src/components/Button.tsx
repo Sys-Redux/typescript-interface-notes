@@ -8,3 +8,9 @@ const Button: React.FC<ButtonProps> = (props) => {
 }
 
 export default Button;
+
+/* Typing event handlers as props
+    Define an interface that defines the shape of the props your component
+    expects, including the event handler.
+    Use the interface in your component definition to ensure type safety.
+*/
